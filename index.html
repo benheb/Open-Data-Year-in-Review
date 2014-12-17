@@ -10,20 +10,19 @@
       ga('send', 'pageview');
 
     </script> <script src=scripts/vendor.js></script> <script src=scripts/plugins.js></script> <script src="http://js.arcgis.com/3.11/"></script> <script src=scripts/main.js></script> <script type=text/javascript>
-        var s = skrollr.init({
-          edgeStrategy: 'set',
-          easing: {
-            WTF: Math.random,
-            inverted: function(p) {
-              return 1-p;
-            }
-          }
-        });
-
+        
         //initialize app on page ready
         $(document).on('ready', function() {
-          $(this).scrollTop(0);
           app = new App({});
+          var s = skrollr.init({
+            edgeStrategy: 'set',
+            easing: {
+              WTF: Math.random,
+              inverted: function(p) {
+                return 1-p;
+              }
+            }
+          });
         });
 
         </script> </body> </html> 
