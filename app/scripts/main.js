@@ -103,7 +103,7 @@ App.prototype.initMap = function() {
 
     //request("http://opendata.arcgis.com/explore.json").then(function(data){
     //request("http://opendatadev.arcgis.com/explore.json").then(function(data){
-    request("../data/explore.json").then(function(data){
+    request("data/explore.json").then(function(data){
       // do something with handled data
       var sites = JSON.parse(data).sites, feature;
 
@@ -308,7 +308,7 @@ App.prototype.monthlyChart = function() {
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.csv("../data/data.csv", function(error, data) {
+  d3.csv("data/data.csv", function(error, data) {
     color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
 
     data.forEach(function(d) {
