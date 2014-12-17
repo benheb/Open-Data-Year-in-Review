@@ -73,8 +73,11 @@ ol, ul {
 }
 
 p {
-  margin:1em 0;
-  line-height:1.1em;
+  margin:auto;
+  margin-top:1em;
+  margin-bottom:1.2em;
+  width:50%;
+  line-height:1.7em;
 }
 
 q {
@@ -227,6 +230,10 @@ h6 {
 /*
  CUSTOM ********************
 */
+.emph {
+  font-size:1.8em;
+  font-weight: 600;
+}
 
 #loader-main {
   height: 100%;
@@ -308,23 +315,52 @@ h6 {
   box-sizing: border-box;
 }
 
-#monthly-chart {
-  font-size: 9pt;
+#org-chart {
 }
 
-.axis path,
-.axis line {
+#org-chart .bar {
+  fill: #3498db;
+}
+
+#org-chart .bar:hover {
+  //fill: brown;
+}
+
+#org-chart .axis {
+  font: 10px sans-serif;
+}
+
+#org-chart .axis path,
+#org-chart .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
 
-.bar {
-  fill: steelblue;
+#org-chart .x.axis path {
+  display: none;
 }
 
-.x.axis path {
+
+#monthly-chart {
+  font-size: 9pt;
+}
+
+#monthly-chart .axis path,
+#monthly-chart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#monthly-chart .x.axis path {
   display: none;
+}
+
+#monthly-chart .line {
+  fill: none;
+  stroke: #ff8c00;
+  stroke-width: 1.5px;
 }
 
 //SECTIoN THREE
