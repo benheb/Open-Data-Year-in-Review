@@ -42,14 +42,24 @@
       <div id="review-intro" class="animated" data-0="top:40%;" data-1000="top:3%;">
         <h2>Open Data</h2>
         <h5>Year in Review, 2014</h5>
+        <div id="scroll-help" class="animated">scroll down</div>
       </div>
       <div id="map-locations"></div>
     </div>
 
     <div id="year-stats" data-500="top:100%;background:rgba(255, 255, 255, 1);" data-1000="top:0%;" data-3000="display:block;" data-3700="top:-100%;display:none;background:rgba(44,62,80,1);" >
-      <h2>10,324 Open Datasets Shared</h2>
-      <p>width, height, padding, font-size, z-index, blah blah blah</p>
-      <div id="monthly-chart"></div>
+
+      <div id="overview" data-1600="top:0%;" data-2500="top:-100%;">
+        <h2>Open Data Launched July 7, 2014</h2>
+        <p>width, height, padding, font-size, z-index, blah blah blah</p>
+      </div>
+
+      <div id="datasets-growth" data-1000="top:100%;display:block;" data-3000="top:0%;">
+        <h2>10,324 Open Datasets Shared</h2>
+        <p>width, height, padding, font-size, z-index, blah blah blah</p>
+        <div id="monthly-chart"></div>
+      </div>
+
     </div>
 
     <div id="customer-highlight" data-0="display:none;" data-3000="display:block;top:100%" data-3700="top:0%" data-9000="top:0%;" data-17000="top:-100%;">
@@ -132,19 +142,19 @@
 
 
         <script type="text/javascript">
-        var s = skrollr.init({
-          edgeStrategy: 'set',
-          easing: {
-            WTF: Math.random,
-            inverted: function(p) {
-              return 1-p;
-            }
-          }
-        });
-
+        
         //initialize app on page ready
         $(document).on('ready', function() {
           app = new App({});
+          var s = skrollr.init({
+            edgeStrategy: 'set',
+            easing: {
+              WTF: Math.random,
+              inverted: function(p) {
+                return 1-p;
+              }
+            }
+          });
         });
 
         </script>

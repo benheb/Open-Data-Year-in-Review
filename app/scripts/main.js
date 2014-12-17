@@ -55,10 +55,19 @@ App.prototype.initMap = function() {
       basemap: "dotted",
       smartNavigation: false
     });
+
+    //things we want to do when map finishes loading
     map.on('load', function() {
       map.disableScrollWheelZoom();
-      $('#loader-main').fadeOut('slow');
+      $('#loader-main').fadeOut('slow', function() {
+        $('#scroll-help').addClass('bounceIn');
+        setTimeout(function() {
+          $('#scroll-help').removeClass('bounceIn');
+          $('#scroll-help').addClass('pulse');
+        },2000);
+      });
     });
+
     var gl = new GraphicsLayer({ id: "circles" });
     map.addLayer(gl);
 
