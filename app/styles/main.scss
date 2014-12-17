@@ -140,24 +140,6 @@ h6 {
 
 .skrollr-desktop #scrollbar {display:none;}
 
-#bg1, #bg2, #bg3 {
-  z-index:50;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:url(images/bubbles.png) repeat 0 0;
-}
-
-#bg2 {
-  z-index:49;
-  background-image:url(images/bubbles2.png);
-}
-
-#bg3 {
-  z-index:48;
-  background-image:url(images/bubbles3.png);
-}
 
 #transform {
   width:70%;
@@ -181,8 +163,8 @@ h6 {
   left:10%;
   height:80%;
   padding:3em;
-  border:0 solid #222;
-
+  background:#FFF;
+  
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -192,9 +174,83 @@ h6 {
   vertical-align:middle;
 }
 
+
+
+/*
+*
+* SPINNER
+*
+*/
+.spinner {
+  width: 40px;
+  height: 40px;
+
+  position: relative;
+  margin: 15px auto;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #FFF;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+
 /*
  CUSTOM ********************
 */
+
+#loader-main {
+  height: 100%;
+  width: 100%;
+  background:#2980b9;
+  z-index: 500;
+  position: fixed;
+}
+
+//review intro text
+#review-intro-loading {
+  color:#FFF;
+  position: absolute;
+  z-index: 100;
+  width: 400px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  margin: auto;
+  margin-top:20%;
+}
+#review-intro-loading h2 {
+  margin-bottom: 0px;
+}
 
 //first map
 #intro-map {

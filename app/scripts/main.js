@@ -57,9 +57,7 @@ App.prototype.initMap = function() {
     });
     map.on('load', function() {
       map.disableScrollWheelZoom();
-      setTimeout(function() {
-        //$('#review-intro').addClass('fadeOut');
-      },3000);
+      $('#loader-main').fadeOut('slow');
     });
     var gl = new GraphicsLayer({ id: "circles" });
     map.addLayer(gl);
