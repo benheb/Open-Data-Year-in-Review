@@ -103,7 +103,7 @@ App.prototype.initMap = function() {
 
     //request("http://opendata.arcgis.com/explore.json").then(function(data){
     //request("http://opendatadev.arcgis.com/explore.json").then(function(data){
-    request("/explore.json").then(function(data){
+    request("../data/explore.json").then(function(data){
       // do something with handled data
       var sites = JSON.parse(data).sites, feature;
 

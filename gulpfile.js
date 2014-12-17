@@ -64,6 +64,11 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest('dist/fonts'));
 });
 
+gulp.task('data', function () {
+  return gulp.src('app/data/**/*')
+    .pipe(gulp.dest('dist/data'));
+});
+
 gulp.task('extras', function () {
   return gulp.src([
     'app/*.*',
@@ -127,7 +132,7 @@ gulp.task('watch', ['connect'], function () {
   gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function () {
+gulp.task('build', ['html', 'images', 'fonts', 'extras', 'data'], function () {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
