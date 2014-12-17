@@ -1,0 +1,26 @@
+<!doctype html> <html class=no-js> <head> <meta charset=utf-8> <meta name=description> <meta name=viewport content="width=device-width, initial-scale=1, minimal-ui"> <title>open data year in review</title>  <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel=stylesheet type=text/css> <link rel=stylesheet href=http://js.arcgis.com/3.11/esri/css/esri.css> <link rel=stylesheet href=styles/main.css> <script src=scripts/vendor/modernizr.js></script> </head> <body> <div id=progress data-0=width:0%; data-end=width:100%;></div> <div id=intro-map data-0="opacity:1;top:0%;transform:rotate(0deg);transform-origin:0 0;" data-500=opacity:1;top:-0%;> <div id=review-intro class=animated data-0=top:40%; data-1000=top:3%;> <h2>Open Data</h2> <h5>Year in Review, 2014</h5> </div> <div id=map-locations></div> </div> <div id=year-stats data-500="top:100%;background:rgba(255, 255, 255, 1);" data-1000=top:0%; data-3000=display:block; data-3700=top:-100%;display:none;background:rgba(44,62,80,1);> <h2>10,324 Open Datasets Shared</h2> <p>width, height, padding, font-size, z-index, blah blah blah</p> <div id=monthly-chart></div> </div> <div id=customer-highlight data-0=display:none; data-3000=display:block;top:100% data-3700=top:0% data-9000=top:0%; data-17000=top:-100%;> <div id=customer-1 data-3900=left:100% data-4600=left:0%;> <div class=customer-container> <h2>DC Open Data</h2> <a href="http://opendata.dc.gov/" class=launch-site>Launch Site</a> <div class=datasets-added id=dc-dataset-count>Datasets Shared: 0</div> </div> </div> <div id=customer-2 data-4600=left:100% data-5300=left:33.33%;> <div class=customer-container> <h2>Open Charlotte</h2> <a href="http://clt.charlotte.opendata.arcgis.com/" class=launch-site>Launch Site</a> <div class=datasets-added id=charlotte-dataset-count>Datasets Shared: 0</div> </div> </div> <div id=customer-3 data-5300=left:100% data-6000=left:66.66%;> <div class=customer-container> <h2>Maryland</h2> <a href="http://data.imap.maryland.gov/" class=launch-site>Launch Site</a> <div class=datasets-added id=md-dataset-count>Datasets Shared: 0</div> </div> </div> </div> <div id=download data-10000=top[cubic]:100%;border-radius[cubic]:0em;background:rgb(0,50,100);border-width:0px; data-12000=top:10%;border-radius:2em;background:rgb(190,230,255);border-width:10px;> <h2>the end</h2> <p>by the way, you can also animate colors (you did notice this, didn't you?)</p> <p><strong>Now get this thing on <a href=https://github.com/Prinzhorn/skrollr>GitHub</a> and spread the word, it's open source!</strong> <a href=https://twitter.com/share class=twitter-share-button data-url="http://prinzhorn.github.com/skrollr/" data-via=Prinzhorn>Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p> <p>Check out more <a href=https://github.com/Prinzhorn/skrollr/tree/master/examples#examples>examples</a>.</p> <p>Handcrafted by <a href=https://twitter.com/Prinzhorn class=twitter-follow-button data-show-count=false>Follow @Prinzhorn</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p> </div> <div id=scrollbar data-0=top:0%;margin-top:2px; data-end=top:100%;margin-top:-52px;></div> <!--[if lt IE 9]>
+    <script type="text/javascript" src="../skrollr-ie/dist/skrollr.ie.min.js"></script>
+    <![endif]-->  <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script> <script src=scripts/vendor.js></script> <script src=scripts/plugins.js></script> <script src="http://js.arcgis.com/3.11/"></script> <script src=scripts/main.js></script> <script type=text/javascript>
+        var s = skrollr.init({
+          edgeStrategy: 'set',
+          easing: {
+            WTF: Math.random,
+            inverted: function(p) {
+              return 1-p;
+            }
+          }
+        });
+
+        //initialize app on page ready
+        $(document).on('ready', function() {
+          app = new App({});
+        });
+        
+        </script> </body> </html> 
