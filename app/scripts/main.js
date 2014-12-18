@@ -73,6 +73,7 @@ var App = function(){
 
   //feature 'constants'
   this.countryStats = {};
+  this.totalDatasetCount = 0;
 
   //init map
   this.initMap();
@@ -84,7 +85,7 @@ var App = function(){
 
 
 App.prototype.zoomToFullExtent = function() {
-  var startExtent = new esri.geometry.Extent(-173.11931249996786, -19.387313471278183, 61.0213124999697, 71.27489360077264,
+  var startExtent = new esri.geometry.Extent(-162.119312499968, -26.181787552107465, 72.02131249996957, 68.75760045155728,
       new esri.SpatialReference({wkid:4326}) );
 
   this.map.setExtent(startExtent);  
@@ -98,9 +99,7 @@ App.prototype.northAmerica = function() {
   var startExtent = new esri.geometry.Extent(-152.00, 10.00, -35.00, 58.00,
       new esri.SpatialReference({wkid:4326}) );
 
-  this.map.setExtent(startExtent, function() {
-    console.log('on COMPLETEL111 -----------');
-  });
+  this.map.setExtent(startExtent);
 
   this.generateStats("north-america");
 }
@@ -181,7 +180,7 @@ App.prototype.initMap = function() {
     };
 
     self.map = new Map("map-locations", {
-      center: [-56.049, 38.485],
+      center: [-45.049, 32.485],
       zoom: 3,
       basemap: "dotted",
       smartNavigation: false
@@ -243,7 +242,7 @@ App.prototype.initMap = function() {
 
     //request("http://opendata.arcgis.com/explore.json").then(function(data){
     //request("http://opendatadev.arcgis.com/explore.json").then(function(data){
-    request("data/explore.json").then(function(data){
+    request("data/explore-prod.json").then(function(data){
       // do something with handled data
       var sites = JSON.parse(data).sites, feature;
 
@@ -316,9 +315,27 @@ App.prototype.initMap = function() {
 
         add(feature);
 
+        //update total count 
+        self.totalDatasetCount = self.totalDatasetCount + parseInt(feature.attributes.datasets_count);
+        $('#total-count').html(self.totalDatasetCount.toLocaleString());
+
+        //update org count
+        var orgs = sites.length;
+        $('#org-count').html(orgs);
       });   
 
+      
       var extentGeometries = [];
+      var sym = esri.symbol.SimpleFillSymbol(
+        esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+        new esri.symbol.SimpleLineSymbol(
+          esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255,255,255]), 0.4),
+        new dojo.Color([93,173,221,0.0])
+      );
+      
+      var searchExtentLayer = new esri.layers.GraphicsLayer({id:"extentLayer"});
+      self.map.addLayer( searchExtentLayer );
+
       _.each(sites, function (item){
         extent = new esri.geometry.Extent(
           item.default_extent.xmin, 
@@ -328,40 +345,12 @@ App.prototype.initMap = function() {
           new esri.SpatialReference({ wkid:102100 })
         );    
 
-        extentGeometries.push(extent);
+        var graphic = new esri.Graphic(extent, sym, {name: item.title, url: item.url});
+            
+        
+        searchExtentLayer.add(graphic);
         
       });
-
-      //addProjectedExtentsToMap(extentGeometries);
-      var projectedExtents = extentGeometries;
-      
-      var searchExtentLayer = new esri.layers.GraphicsLayer({id:"extentLayer"});
-      self.map.addLayer( searchExtentLayer );
-        
-      var graphics = [],
-      extent,
-      graphic;
-    
-      var sym = esri.symbol.SimpleFillSymbol(
-        esri.symbol.SimpleFillSymbol.STYLE_SOLID,
-        new esri.symbol.SimpleLineSymbol(
-          esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255,255,255]), 0.4),
-        new dojo.Color([93,173,221,0.0])
-      );
-
-      for(var i =0; i < sites.length;i++){
-      
-        if (sites[i].default_extent.spatial_reference.wkid === 102100) {
-          graphic = new esri.Graphic(projectedExtents[i], sym, {name: sites[i].title, url: sites[i].url});
-          
-          graphics.push(graphic);
-          //console.log('graphic', graphic);
-
-          searchExtentLayer.add(graphic);
-        } else {
-          console.log('no');
-        }
-      }
 
     });
     
@@ -375,6 +364,7 @@ App.prototype.initMap = function() {
     }
 
     function onGraphicClick(e) {
+      console.log('click me!');
       if ( e.graphic.attributes.url !== "" && e.graphic.attributes.url !== null ) {
         window.open(e.graphic.attributes.url);
       }

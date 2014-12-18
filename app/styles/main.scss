@@ -368,6 +368,7 @@ h6 {
 #country-maps {
   width:100%;
   height:100%;
+  pointer-events:none;
 }
 
 .continent-info-container {
@@ -390,7 +391,7 @@ h6 {
   color:#FFF;
 }
 
-#customer-1, #customer-2, #customer-3 {
+#customer-1, #customer-2, #customer-3, #customer-4, #customer-5, #customer-6 {
   top: 0%;
   width: 33.33%;
   z-index: 101;
@@ -437,6 +438,27 @@ h6 {
 
 #customer-3 {
   background:#c0392b;
+}
+
+#customer-4 {
+  background:#f8bb25;
+  z-index: 600;
+  height:50%;
+  top:50%;
+}
+
+#customer-5 {
+  background:#256e9d;
+  z-index: 600;
+  height:50%;
+  top:50%;
+}
+
+#customer-6 {
+  background:#bdc3c7;
+  z-index: 600;
+  height:50%;
+  top:50%;
 }
 
 
