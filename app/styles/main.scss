@@ -124,7 +124,8 @@ h6 {
 
 #progress {
   height:3px;
-  background:#3498db;
+  //background:#3498db;
+  background:#f39c12;
   bottom:0;
   z-index:200;
 }
@@ -363,6 +364,24 @@ h6 {
   stroke-width: 1.5px;
 }
 
+//geo zoomz
+#country-maps {
+  width:100%;
+  height:100%;
+}
+
+.continent-info-container {
+  padding:10px;
+}
+
+.continent-stat {
+  font-size:1.9rem;
+}
+
+#continent-north-america {
+  background:#FFF;
+}
+
 //SECTIoN THREE
 #customer-highlight {
   width:100%;
@@ -419,3 +438,5 @@ h6 {
 #customer-3 {
   background:#c0392b;
 }
+
+

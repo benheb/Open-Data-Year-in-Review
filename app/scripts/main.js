@@ -1,12 +1,56 @@
 var App = function(){
+  var self = this;
 
   //resize map container based on window size
   var height = $(window).height() - 200;
   var width = $(window).width();
-  
+
   //EVENTS
   $(window).on('scroll', function() {
     var scrollTop = $(window).scrollTop();
+    console.log('scrollTop',scrollTop);
+
+
+    //map
+    if ( self.map ) {
+
+      if ( scrollTop < 3700 ) {
+        if ( !self.fullMap || self.fullMap === false ) {
+          self.na = false;
+          self.eu = false;
+          self.af = false;
+          self.zoomToFullExtent();
+        }
+      }
+
+      if ( scrollTop >=3700 && scrollTop < 5300 ) {
+        if ( !self.na || self.na === false ) {
+          self.na = true;
+          self.eu = false;
+          self.af = false;
+          self.northAmerica();
+        }
+      }
+
+      if ( scrollTop >=5300 && scrollTop < 7700 ) {
+        if ( !self.eu || self.eu === false ) {
+          self.eu = true;
+          self.na = false;
+          self.af = false;
+          self.europe();
+        }
+      }
+
+      if ( scrollTop >= 7700 ) {
+        if ( !self.af || self.af === false ) {
+          self.af = true;
+          self.na = false;
+          self.eu = false;
+          self.africa();
+        }
+      }
+    }
+
 
     //dataset counts!
     if ( scrollTop > 3900 ) {
@@ -27,6 +71,9 @@ var App = function(){
 
   });
 
+  //feature 'constants'
+  this.countryStats = {};
+
   //init map
   this.initMap();
   this.orgChart();
@@ -35,9 +82,92 @@ var App = function(){
 };
 
 
+
+App.prototype.zoomToFullExtent = function() {
+  var startExtent = new esri.geometry.Extent(-173.11931249996786, -19.387313471278183, 61.0213124999697, 71.27489360077264,
+      new esri.SpatialReference({wkid:4326}) );
+
+  this.map.setExtent(startExtent);  
+}
+
+
+
+App.prototype.northAmerica = function() {
+  console.log('set north america!');
+
+  var startExtent = new esri.geometry.Extent(-152.00, 10.00, -35.00, 58.00,
+      new esri.SpatialReference({wkid:4326}) );
+
+  this.map.setExtent(startExtent, function() {
+    console.log('on COMPLETEL111 -----------');
+  });
+
+  this.generateStats("north-america");
+}
+
+
+
+App.prototype.europe = function() {
+  console.log('set europe!');
+
+  var startExtent = new esri.geometry.Extent(-51.00, 27.00, 65.00, 66.00,
+      new esri.SpatialReference({wkid:4326}) );
+
+  this.map.setExtent(startExtent); 
+  this.generateStats("europe");
+}
+
+
+App.prototype.africa = function() {
+  console.log('set europe!');
+
+  var startExtent = new esri.geometry.Extent(-48.00, -25.00, 69.00, 32.00,
+      new esri.SpatialReference({wkid:4326}) );
+
+  this.map.setExtent(startExtent); 
+  this.generateStats("africa");
+}
+
+
+
+
+
+App.prototype.generateStats = function(continent) {
+
+  if ( !this.countryStats[continent] ) {
+    var features = this.map.getLayer("circles").graphics;
+    
+    var visible = [];
+    var datasets = 0;
+    _.each(features, function(feature) {
+      if (self.map.extent.contains(feature.geometry) === true) {
+        datasets = datasets + feature.attributes.datasets;
+        visible.push(feature);
+      }
+    });
+
+    $('.'+continent+'#org-count').html("Total Orgs: "+ visible.length.toLocaleString());
+    $('.'+continent+'#dataset-count').html("Datasets Shared: "+ datasets.toLocaleString());
+    console.log('Total orgs: ', visible.length);
+    console.log('Total Datasets: ', datasets);
+
+    this.countryStats[continent] = {};
+    this.countryStats[continent].visible = visible;
+    this.countryStats[continent].datasets = datasets;
+  } else {
+    $('.'+continent+'#org-count').html("Total Orgs: "+ this.countryStats[continent].visible.length.toLocaleString());
+    $('.'+continent+'#dataset-count').html("Datasets Shared: "+ this.countryStats[continent].datasets.toLocaleString());
+  }
+
+}
+
+
+
+
 App.prototype.initMap = function() {
   //MAP! 
-  var map;
+  var self = this;
+
   require(["esri/map", "dojo/request", "esri/geometry/Circle", "esri/symbols/SimpleFillSymbol", 
     "esri/graphic", "esri/layers/GraphicsLayer", "esri/geometry/Point", "esri/SpatialReference", "esri/geometry/webMercatorUtils",
     "esri/layers/ArcGISTiledMapServiceLayer", "esri/layers/FeatureLayer", "dojo/domReady!"], function(Map, request, Circle, 
@@ -50,7 +180,7 @@ App.prototype.initMap = function() {
       title: "dots"
     };
 
-    map = new Map("map-locations", {
+    self.map = new Map("map-locations", {
       center: [-56.049, 38.485],
       zoom: 3,
       basemap: "dotted",
@@ -58,8 +188,8 @@ App.prototype.initMap = function() {
     });
 
     //things we want to do when map finishes loading
-    map.on('load', function() {
-      map.disableScrollWheelZoom();
+    self.map.on('load', function() {
+      self.map.disableScrollWheelZoom();
       $('#loader-main').fadeOut('slow', function() {
         $('#scroll-help').addClass('bounceIn');
         setTimeout(function() {
@@ -70,11 +200,13 @@ App.prototype.initMap = function() {
     });
 
     var gl = new GraphicsLayer({ id: "circles" });
-    map.addLayer(gl);
+    self.map.addLayer(gl);
 
-    map.on('click', function() {
+    self.map.on('click', function() {
       //$('#review-intro').addClass('fadeOut');
     });
+
+    window.map = self.map;
 
 
     function add(f){
@@ -204,7 +336,7 @@ App.prototype.initMap = function() {
       var projectedExtents = extentGeometries;
       
       var searchExtentLayer = new esri.layers.GraphicsLayer({id:"extentLayer"});
-      map.addLayer( searchExtentLayer );
+      self.map.addLayer( searchExtentLayer );
         
       var graphics = [],
       extent,
@@ -265,15 +397,15 @@ App.prototype.initMap = function() {
       var g = new esri.Graphic( graphic );
       
       //add to map
-      map.graphics.add( g );
+      self.map.graphics.add( g );
     }
 
     function removeSelectedFeature() {
-      $.each(map.graphics.graphics, function(index,gra){
+      $.each(self.map.graphics.graphics, function(index,gra){
         if (gra) {
           console.log('ra!', gra);
           if(gra.attributes && gra.attributes.id === "selectedFeature"){
-            map.graphics.remove( gra );
+            self.map.graphics.remove( gra );
           }
         }
       });
