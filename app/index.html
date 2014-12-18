@@ -71,19 +71,27 @@
 
 
     <div id="country-maps" data-0="display:none;" data-3000="display:block;top:100%" data-3700="top:0%" data-9000="top:0%;" data-17000="top:-100%;">
-      <div id="continent-north-america" data-0="display:none;" data-3000="display:block;top:100%;background:rgba(255,255,255,0);" data-4100="top:0%;background:rgba(255,255,255,1);" data-5500="top:0%;" data-5600="top:-100%;">
+      <div id="continent-north-america" data-0="display:none;" data-3000="display:block;top:100%;background:rgba(255,255,255,0);" data-4100="top:0%;background:rgba(255,255,255,1);" data-5375="top:0%;" data-5650="top:-100%;">
         <div class="continent-info-container">
           <h2>North America</h2>
           <div class="continent-stat north-america" id="org-count"></div>
           <div class="continent-stat north-america" id="dataset-count"></div>
+
+          <div class="org-info org-title"></div>
+          <div class="org-info org-group-count"></div>
+          <div class="org-info org-dataset-count"></div>
         </div>
       </div>
 
-      <div id="continent-north-europe" data-0="display:none;" data-5000="display:block;top:100%;background:rgba(255,255,255,0);" data-5700="top:0%;background:rgba(255,255,255,1);" data-7600="top:0%;" data-7700="top:-100%;">
+      <div id="continent-north-europe" data-0="display:none;" data-5000="display:block;top:100%;background:rgba(255,255,255,0);" data-5700="top:0%;background:rgba(255,255,255,1);" data-7555="top:0%;" data-7900="top:-100%;">
         <div class="continent-info-container">
           <h2>Europe</h2>
           <div class="continent-stat europe" id="org-count"></div>
           <div class="continent-stat europe" id="dataset-count"></div>
+
+          <div class="org-info org-title"></div>
+          <div class="org-info org-group-count"></div>
+          <div class="org-infoorg-dataset-count"></div>
         </div>
       </div>
 
@@ -92,6 +100,10 @@
           <h2>Africa</h2>
           <div class="continent-stat africa" id="org-count"></div>
           <div class="continent-stat africa" id="dataset-count"></div>
+
+          <div class="org-info org-title"></div>
+          <div class="org-info org-group-count"></div>
+          <div class="org-info org-dataset-count"></div>
         </div>
       </div>
     </div>
@@ -208,7 +220,6 @@
           var s = skrollr.init({
             edgeStrategy: 'set',
             easing: {
-              WTF: Math.random,
               inverted: function(p) {
                 return 1-p;
               }

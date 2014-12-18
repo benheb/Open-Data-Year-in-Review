@@ -198,6 +198,9 @@ App.prototype.initMap = function() {
       });
     });
 
+    var searchExtentLayer = new esri.layers.GraphicsLayer({id:"extentLayer"});
+    self.map.addLayer( searchExtentLayer );
+
     var gl = new GraphicsLayer({ id: "circles" });
     self.map.addLayer(gl);
 
@@ -228,7 +231,7 @@ App.prototype.initMap = function() {
     }
 
     gl.on('mouse-over', function(e) {
-      //featureSelected( e.graphic, 'mouse-over' );
+      featureSelected( e.graphic, 'mouse-over' );
       showHoverWindow(e);
     });
 
@@ -237,7 +240,7 @@ App.prototype.initMap = function() {
     });
 
     gl.on('mouse-out', function(e) {
-      //removeSelectedFeature( 'mouse-over' );
+      removeSelectedFeature( e.graphic );
     });
 
     //request("http://opendata.arcgis.com/explore.json").then(function(data){
@@ -333,9 +336,7 @@ App.prototype.initMap = function() {
         new dojo.Color([93,173,221,0.0])
       );
       
-      var searchExtentLayer = new esri.layers.GraphicsLayer({id:"extentLayer"});
-      self.map.addLayer( searchExtentLayer );
-
+      
       _.each(sites, function (item){
         extent = new esri.geometry.Extent(
           item.default_extent.xmin, 
@@ -358,27 +359,26 @@ App.prototype.initMap = function() {
       var datasets = e.graphic.attributes.datasets;
       var title = e.graphic.attributes.title;
       var groups = e.graphic.attributes.groups;
-      $('#title').html(title);
-      $('#groups').html('Open Data Groups: ' + groups);
-      $('#count').html("Datasets: " + datasets);
+      $('.org-title').html(title);
+      $('.org-group-count').html('Open Data Groups: ' + groups);
+      $('.org-dataset-count').html("Datasets: " + datasets);
     }
 
     function onGraphicClick(e) {
-      console.log('click me!');
-      if ( e.graphic.attributes.url !== "" && e.graphic.attributes.url !== null ) {
-        window.open(e.graphic.attributes.url);
-      }
+      //if ( e.graphic.attributes.url !== "" && e.graphic.attributes.url !== null ) {
+      //  window.open(e.graphic.attributes.url);
+      //}
     }
 
     function featureSelected(graphicJson) {
       var graphic = {};
       graphic.geometry = graphicJson.geometry;
       graphic.symbol = {};
-      graphic.attributes = { id: "selectedFeature" }
-
+      graphic.attributes = { id: "selectedFeature", title: graphicJson.attributes.title }
+      this.selectedFeature = graphicJson.attributes.title;
 
       graphic.symbol = {
-        "color":[255,255,255,1],"size":graphicJson.symbol.size,"angle":0,"xoffset":0,"yoffset":0,"type":"esriSMS","style":"esriSMSCircle",
+        "color":[255,255,255,1],"size":graphicJson.symbol.size - 2,"angle":0,"xoffset":0,"yoffset":0,"type":"esriSMS","style":"esriSMSCircle",
         "outline":{"color":[255,255,255,255],"width":2,
         "type":"esriSLS","style":"esriSLSSolid"}
       };
@@ -390,12 +390,14 @@ App.prototype.initMap = function() {
       self.map.graphics.add( g );
     }
 
-    function removeSelectedFeature() {
+    function removeSelectedFeature(graphicJson) {
+      var selected = this.selectedFeature;
       $.each(self.map.graphics.graphics, function(index,gra){
         if (gra) {
-          console.log('ra!', gra);
-          if(gra.attributes && gra.attributes.id === "selectedFeature"){
-            self.map.graphics.remove( gra );
+          if(gra.attributes && gra.attributes.id === "selectedFeature" ) {
+            if (gra.attributes.title !== selected) {
+              self.map.graphics.remove( gra );
+            }
           }
         }
       });
