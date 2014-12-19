@@ -12,6 +12,7 @@
 
 ##### Deploy
 Checkout gh-pages then:
+
 `gulp build`
 
 `gulp deploy`
