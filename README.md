@@ -4,11 +4,14 @@
 
 ##### Develop
 `npm install`
+
 `bower install`
+
 `gulp serve`
 
 
 ##### Deploy
 Checkout gh-pages then:
 `gulp build`
+
 `gulp deploy`
