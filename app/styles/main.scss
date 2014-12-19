@@ -88,6 +88,13 @@ p {
   line-height:1.7em;
 }
 
+@media (max-width: 480px) {
+  p {
+    font-size: 11px;
+    margin: auto 3%;
+  }
+}
+
 q {
   font-style:italic;
   color:#333;
@@ -109,7 +116,7 @@ h1 {
 }
 
 h2 {
-    font-size: 3.6rem;
+    //font-size: 3.6rem;
     letter-spacing: -1px;
 }
 
@@ -282,7 +289,14 @@ h6 {
   //background:#315A76;
   //background:#564141;
   background:#2980b9;
-  //opacity: 0.4;
+  //opacity: 0.1;
+}
+
+/* Custom, iPhone Retina */ 
+@media (max-width: 480px) {
+  #map-locations {
+    pointer-events:none;
+  }
 }
 
 #map-locations img {
@@ -300,6 +314,14 @@ h6 {
   right: 0;
   margin: auto;
 }
+
+/* Custom, iPhone Retina */ 
+@media (max-width: 480px) {
+  #review-intro {
+    width: 350px;
+  }
+}
+
 #review-intro h2 {
   margin-bottom: 0px;
 }
@@ -392,6 +414,14 @@ h6 {
   background: url("http://www.arcgis.com/features/img/main/main-banner.jpg") top center no-repeat #002436;
 }
 
+/* Custom, iPhone Retina */ 
+@media (max-width: 480px) {
+  .continent-info-container {
+    width: 360px;
+    min-height: 200px;
+  }
+}
+
 .continent-stat {
   font-size: 1.9rem;
   margin-top: -18px;
@@ -425,6 +455,7 @@ h6 {
   text-align: center;
   font-weight: 100;
 }
+
 
 .datasets-added {
   font-size: 2rem;
@@ -478,6 +509,20 @@ h6 {
   z-index: 600;
   height:50%;
   top:50%;
+}
+
+
+/* Custom, iPhone Retina */ 
+@media (max-width: 480px) {
+  .customer-container h2 {
+    font-size:0.8em;
+  }
+  .datasets-added {
+    font-size:0.8em;
+  }
+  a {
+    font-size:0.8em; 
+  }
 }
 
 
