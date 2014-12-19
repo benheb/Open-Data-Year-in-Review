@@ -1,3 +1,9 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+// bower:scss
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
 /*
  * This file is NOT needed in order to use skrollr.
  * The demo uses it and it may help you as well.
@@ -76,7 +82,9 @@ p {
   margin:auto;
   margin-top:1em;
   margin-bottom:1.2em;
-  width:50%;
+  margin: auto 21%;
+  max-width: 800px;
+  padding-bottom: 20px;
   line-height:1.7em;
 }
 
@@ -162,23 +170,23 @@ h6 {
   padding:1em;
 }
 
-#download {
-  width:80%;
-  left:10%;
-  height:80%;
-  padding:3em;
-  background:#FFF;
-  
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 .twitter-share-button, .twitter-follow-button {
   vertical-align:middle;
 }
 
 
+
+.map .container {
+  position: relative;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  left: 0px;
+  top: 0px !important;
+  overflow: hidden;
+  width: 100%;
+  height: 100% !important;
+}
 
 /*
 *
@@ -473,3 +481,28 @@ h6 {
 }
 
 
+//END
+#conclude {
+  width:80%;
+  left:10%;
+  height:80%;
+  padding:3em;
+  background: url("http://www.arcgis.com/features/img/main/main-banner.jpg") top center no-repeat #002436;
+  
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#learn-more-btn {
+  margin:auto;
+  width:300px;
+  text-align: center;
+  margin-top:150px;
+  .btn {
+    margin:auto;
+    width:300px;
+    padding: 20px 16px;
+    background: rgba(255,255,255,0.3);
+  }
+}
