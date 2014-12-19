@@ -116,7 +116,7 @@ h1 {
 }
 
 h2 {
-    //font-size: 3.6rem;
+    font-size: 3.6rem;
     letter-spacing: -1px;
 }
 
@@ -449,16 +449,37 @@ h6 {
 
 .customer-container {
   margin:10px;
+  text-align: center;
+}
+
+.org-logo {
+  margin-top:25px;
+}
+
+.org-logo img {
+  width:40%;
+}
+
+#customer-2 .org-logo img {
+  width:27%;
+}
+
+#customer-5 .org-logo img {
+  width:80%;
+}
+
+#customer-3 .org-logo img {
+  width:35%;
 }
 
 .customer-container h2 {
   text-align: center;
   font-weight: 100;
+  font-size:2.4em;
 }
 
-
 .datasets-added {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 100;
 }
 
@@ -474,6 +495,7 @@ h6 {
   margin: auto;
   margin-bottom: 30px;
   color:#EEE;
+  border-radius:5px;
 }
 
 #customer-1 {

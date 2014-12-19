@@ -51,24 +51,6 @@ var App = function(){
       }
     }
 
-
-    //dataset counts!
-    if ( scrollTop > 3900 ) {
-      var dc = scrollTop - 3900;
-      if ( dc >= 1011 ) { dc = 1011 };
-      $('#dc-dataset-count').html("Datasets Shared: "+ dc);
-    }
-    if ( scrollTop > 4900 ) {
-      var charlotte = scrollTop - 4900;
-      if ( charlotte >= 42 ) { charlotte = 42 };
-      $('#charlotte-dataset-count').html("Datasets Shared: "+ charlotte);
-    }
-    if ( scrollTop > 5880 ) {
-      var md = scrollTop - 5880;
-      if ( md >= 356 ) { md = 356 };
-      $('#md-dataset-count').html("Datasets Shared: "+ md);
-    }
-
   });
 
   //feature 'constants'
