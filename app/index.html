@@ -46,7 +46,7 @@
         <h5>Year in Review, 2014</h5>
         <div id="scroll-help" class="animated">scroll down</div>
       </div>
-      <div id="map-locations" data-0="background:rgba(41,128,185,1);" data-8100="background:rgba(41,128,185,1);" data-8400="background:background:rgba(44,62,80,1);"></div>
+      <div id="map-locations" data-0="background:rgba(41,128,185,1);" data-11000="background:rgba(41,128,185,1);" data-11400="background:background:rgba(44,62,80,1);"></div>
     </div>
 
     <div id="year-stats" data-500="top:100%;background:rgba(255, 255, 255, 1);" data-1000="top:0%;" data-3000="display:block;" data-3700="top:-100%;display:none;background:rgba(44,62,80,0);" >
@@ -62,8 +62,8 @@
       </div>
 
       <div id="datasets-growth" data-1500="top:100%;display:block;" data-3000="top:0%;">
-        <p>Together they have shared more than <span class="emph">13,000</span> datasets with the community.</p>
-        <h2><span id="total-count">10,324</span> Open Datasets Shared</h2>
+        <p>Together they have shared more than <span class="emph">9,000</span> datasets with the community.</p>
+        <h2><span id="total-count">9,516</span> Open Datasets Shared</h2>
         <div id="monthly-chart"></div>
       </div>
 
@@ -73,11 +73,12 @@
 
 
     <div id="country-maps" data-0="display:none;" data-3000="display:block;top:100%" data-3700="top:0%" data-9000="top:0%;" data-17000="top:-100%;">
+      
       <div id="continent-north-america" data-0="display:none;" data-3000="display:block;top:100%;background:rgba(255,255,255,0);" data-4100="top:0%;background:rgba(255,255,255,1);" data-5375="top:0%;" data-5650="top:-100%;">
         <div class="continent-info-container">
           <h2>North America</h2>
-          <div class="continent-stat north-america" id="org-count"></div>
-          <div class="continent-stat north-america" id="dataset-count"></div>
+          <div class="continent-stat north-america" id="org-count">Total Orgs: 390</div>
+          <div class="continent-stat north-america" id="dataset-count">Datasets Shared: 6,278</div>
 
           <div class="org-info org-title"></div>
           <div class="org-info org-group-count"></div>
@@ -85,11 +86,11 @@
         </div>
       </div>
 
-      <div id="continent-north-europe" data-0="display:none;" data-5000="display:block;top:100%;background:rgba(255,255,255,0);" data-5700="top:0%;background:rgba(255,255,255,1);" data-7555="top:0%;" data-7900="top:-100%;">
+      <div id="continent-north-europe" data-0="display:none;" data-5000="display:block;top:100%;" data-5700="top:0%;" data-7555="top:0%;" data-7900="top:-100%;">
         <div class="continent-info-container">
           <h2>Europe</h2>
-          <div class="continent-stat europe" id="org-count"></div>
-          <div class="continent-stat europe" id="dataset-count"></div>
+          <div class="continent-stat europe" id="org-count">Total Orgs: 157</div>
+          <div class="continent-stat europe" id="dataset-count">Datasets Shared: 1,126</div>
 
           <div class="org-info org-title"></div>
           <div class="org-info org-group-count"></div>
@@ -97,11 +98,24 @@
         </div>
       </div>
 
-      <div id="continent-north-africa" data-0="display:none;" data-7300="display:block;top:100%;background:rgba(255,255,255,0);" data-7800="top:0%;background:rgba(255,255,255,1);" data-8200="top:0%;" data-9000="top:-100%;">
+      <div id="continent-north-africa" data-0="display:none;" data-7300="display:block;top:100%;" data-7800="top:0%;" data-8400="top:0%;" data-9200="top:-100%;">
         <div class="continent-info-container">
           <h2>Africa</h2>
-          <div class="continent-stat africa" id="org-count"></div>
-          <div class="continent-stat africa" id="dataset-count"></div>
+          <div class="continent-stat africa" id="org-count">Total Orgs: 121</div>
+          <div class="continent-stat africa" id="dataset-count">Datasets Shared: 338</div>
+
+          <div class="org-info org-title"></div>
+          <div class="org-info org-group-count"></div>
+          <div class="org-info org-dataset-count"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="continent-asia" data-0="display:none;" data-8400="display:block;top:100%;" data-9000="top:0%;" data-9400="top:0%;" data-10000="top:-100%;">
+        <div class="continent-info-container">
+          <h2>Asia</h2>
+          <div class="continent-stat asia" id="org-count">Total Orgs: 39</div>
+          <div class="continent-stat asia" id="dataset-count">Datasets Shared: 295</div>
 
           <div class="org-info org-title"></div>
           <div class="org-info org-group-count"></div>
@@ -111,35 +125,27 @@
     </div>
 
 
+    <div id="continent-oceania" data-0="display:none;" data-9600="display:block;top:100%;background:rgba(255,255,255,0);" data-10400="top:0%;background:rgba(255,255,255,1);" data-11000="top:0%;" data-11400="top:-100%;">
+        <div class="continent-info-container">
+          <h2>Oceania</h2>
+          <div class="continent-stat oceania" id="org-count">Total Orgs: 22</div>
+          <div class="continent-stat oceania" id="dataset-count">Datasets Shared: 309</div>
+
+          <div class="org-info org-title"></div>
+          <div class="org-info org-group-count"></div>
+          <div class="org-info org-dataset-count"></div>
+        </div>
+      </div>
+    </div>
 
 
-    <div id="customer-highlight" data-0="display:none;" data-8300="display:block;top:100%;background:rgba(44,62,80,0);" data-9000="top:0%;background:rgba(44,62,80,1);" data-17400="top:0%;" data-19200="top:-100%;">
-      <div class="mesh" data-0="display:none;" data-8300="display:block;top:100%;opacity:0" data-8500="top:0%;opacity:0.07" data-17400="top:0%;" data-19200="top:-100%;">
+    <div id="customer-highlight" data-0="display:none;" data-10900="display:block;top:100%;background:rgba(44,62,80,0);" data-11500="top:0%;background:rgba(44,62,80,1);" data-18000="top:0%;" data-19200="top:-100%;">
+      <div class="mesh" data-0="display:none;" data-8300="display:block;top:100%;opacity:0" data-11300="top:0%;opacity:0.07" data-18000="top:0%;" data-19200="top:-100%;">
       </div>
       <div id="open-data-org-header">
         <p>Organizations making <span class="emph">ArcGIS Open Data</span> possible... </p>
       </div>
-      <div id="customer-1" data-9200="left:100%" data-10100="left:0%;">
-        <div class="customer-container">
-          <h2>DC Open Data</h2>
-          <a href="http://opendata.dc.gov/" class="launch-site">Launch Site</a>
-          <div class="datasets-added" id="dc-dataset-count">Datasets Shared: 1,048</div>
-          <div class="org-logo">
-            <img src="images/dc-logo.jpg"></img>
-          </div>
-        </div>
-      </div>
-      <div id="customer-2" data-10100="left:100%" data-11400="left:33.33%;">
-        <div class="customer-container">
-          <h2>Open Charlotte</h2>
-          <a href="http://clt.charlotte.opendata.arcgis.com/" class="launch-site">Launch Site</a>
-          <div class="datasets-added" id="charlotte-dataset-count">Datasets Shared: 42</div>
-          <div class="org-logo">
-            <img src="images/charlotte-logo.png"></img>
-          </div>
-        </div>
-      </div>
-      <div id="customer-3" data-11400="left:100%" data-13000="left:66.66%;">
+      <div id="customer-3" data-11400="left:100%" data-12000="left:0%;">
         <div class="customer-container">
           <h2>Maryland</h2>
           <a href="http://data.imap.maryland.gov/" class="launch-site">Launch Site</a>
@@ -149,13 +155,33 @@
           </div>
         </div>
       </div>
+      <div id="customer-2" data-12000="left:100%" data-12500="left:33.33%;">
+        <div class="customer-container">
+          <h2>Open Charlotte</h2>
+          <a href="http://clt.charlotte.opendata.arcgis.com/" class="launch-site">Launch Site</a>
+          <div class="datasets-added" id="charlotte-dataset-count">Datasets Shared: 42</div>
+          <div class="org-logo">
+            <img src="images/charlotte-logo.png"></img>
+          </div>
+        </div>
+      </div>
+      <div id="customer-1" data-12500="left:100%" data-13100="left:66.66%;">
+        <div class="customer-container">
+          <h2>DC Open Data</h2>
+          <a href="http://opendata.dc.gov/" class="launch-site">Launch Site</a>
+          <div class="datasets-added" id="dc-dataset-count">Datasets Shared: 1,048</div>
+          <div class="org-logo">
+            <img src="images/dc-logo.jpg"></img>
+          </div>
+        </div>
+      </div>
       <div id="customer-4" data-13000="left:100%" data-14100="left:0%;">
         <div class="customer-container">
-          <h2>Queensland</h2>
-          <a href="http://data.odiqueensland.opendata.arcgis.com/" class="launch-site">Launch Site</a>
-          <div class="datasets-added" id="md-dataset-count">Datasets Shared: 3,614</div>
+          <h2>Humanitarian Data Repository</h2>
+          <a href="http://ohdr.nethope.opendata.arcgis.com/" class="launch-site">Launch Site</a>
+          <div class="datasets-added" id="md-dataset-count">Datasets Shared: 22</div>
           <div class="org-logo">
-            <img src="images/queen-logo.jpg"></img>
+            <img src="images/human-logo.png"></img>
           </div>
         </div>
       </div>
@@ -171,9 +197,12 @@
       </div>
       <div id="customer-6" data-16100="left:100%" data-17300="left:66.66%;">
         <div class="customer-container">
-          <h2>North Frontenac</h2>
-          <a href="http://data.nftwp.opendata.arcgis.com/" class="launch-site">Launch Site</a>
-          <div class="datasets-added" id="md-dataset-count">Datasets Shared: 10</div>
+          <h2>Launceston</h2>
+          <a href="http://lcc.launceston.opendata.arcgis.com/datasets?q=*&sort_by=updated_at" class="launch-site">Launch Site</a>
+          <div class="datasets-added" id="md-dataset-count">Datasets Shared: 11</div>
+          <div class="org-logo">
+            <img src="images/llc-logo.png"></img>
+          </div>
         </div>
       </div>
     </div>
@@ -181,7 +210,7 @@
 
 
 
-    <div id="conclude" data-17500="top[cubic]:100%;" data-18400="top:10%;">
+    <div id="conclude" data-18100="top[cubic]:100%;" data-18900="top:10%;">
       <div class="row">
         <div class="col-md-4">
           <h4>Shapefile <br /> Downloads</h4>
@@ -200,6 +229,7 @@
         <a href="https://opendata.arcgis.com/about" class="btn btn-default btn-lg">Learn More</a>
       </div>
     </div>
+
     <div id="scrollbar" data-0="top:0%;margin-top:2px;" data-end="top:100%;margin-top:-52px;"></div>
 
     <!--[if lt IE 9]>
