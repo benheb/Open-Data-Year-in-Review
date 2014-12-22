@@ -19,6 +19,8 @@ var App = function(){
           self.na = false;
           self.eu = false;
           self.af = false;
+          self.as = false;
+          self.oc = false;
           self.zoomToFullExtent();
         }
       }
@@ -37,16 +39,42 @@ var App = function(){
           self.eu = true;
           self.na = false;
           self.af = false;
+          self.oc = false;
+          self.as = false; 
           self.europe();
         }
       }
 
-      if ( scrollTop >= 7700 ) {
+      if ( scrollTop >= 7700 && scrollTop < 8400 ) {
         if ( !self.af || self.af === false ) {
           self.af = true;
           self.na = false;
           self.eu = false;
+          self.oc = false;
+          self.as = false;
           self.africa();
+        }
+      }
+
+      if ( scrollTop >= 8400 && scrollTop < 9600 ) {
+        if ( !self.as || self.as === false ) {
+          self.as = true;
+          self.af = false;
+          self.na = false;
+          self.eu = false;
+          self.oc = false;
+          self.asia();
+        }
+      }
+
+      if ( scrollTop >= 9600 ) {
+        if ( !self.oc || self.oc === false ) {
+          self.oc = true;
+          self.as = false;
+          self.af = false;
+          self.na = false;
+          self.eu = false;
+          self.oceania();
         }
       }
     }
@@ -83,7 +111,7 @@ App.prototype.northAmerica = function() {
 
   this.map.setExtent(startExtent);
 
-  this.generateStats("north-america");
+  //this.generateStats("north-america");
 }
 
 
@@ -95,7 +123,7 @@ App.prototype.europe = function() {
       new esri.SpatialReference({wkid:4326}) );
 
   this.map.setExtent(startExtent); 
-  this.generateStats("europe");
+  //this.generateStats("europe");
 }
 
 
@@ -106,10 +134,30 @@ App.prototype.africa = function() {
       new esri.SpatialReference({wkid:4326}) );
 
   this.map.setExtent(startExtent); 
-  this.generateStats("africa");
+  //this.generateStats("africa");
 }
 
 
+
+App.prototype.asia = function() {
+  console.log('set asia!');
+
+  var startExtent = new esri.geometry.Extent(41.00, -6.00, 160.00, 49.00,
+      new esri.SpatialReference({wkid:4326}) );
+
+  this.map.setExtent(startExtent); 
+  //this.generateStats("africa");
+}
+
+App.prototype.oceania = function() {
+  console.log('set oceania!');
+
+  var startExtent = new esri.geometry.Extent(91.00, -51.00, 210.00, 3.00,
+      new esri.SpatialReference({wkid:4326}) );
+
+  this.map.setExtent(startExtent); 
+  //this.generateStats("africa");
+}
 
 
 
@@ -225,6 +273,48 @@ App.prototype.initMap = function() {
       removeSelectedFeature( e.graphic );
     });
 
+    /*
+    request("data/datasets-all.json").then(function(data){
+      //console.log('data', data);
+      var json = JSON.parse(data);
+      console.log('json', json);
+
+      var extentGeometries = [];
+      var sym = esri.symbol.SimpleFillSymbol(
+        esri.symbol.SimpleFillSymbol.STYLE_SOLID,
+        new esri.symbol.SimpleLineSymbol(
+          esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255,255,255]), 0.4),
+        new dojo.Color([93,173,221,0.0])
+      );
+      
+      
+      console.log('kson', json.length);
+
+      _.each(json, function (item){
+        if ( item.extent ) {
+          if ( item.extent.coordinates ) {
+            console.log('1');
+            extent = new esri.geometry.Extent(
+              item.extent.coordinates[0][0], 
+              item.extent.coordinates[0][1], 
+              item.extent.coordinates[1][0], 
+              item.extent.coordinates[1][1],
+              new esri.SpatialReference({ wkid:4326 })
+            );    
+
+            //console.log('extent', extent);
+            var graphic = new esri.Graphic(extent, sym, {});
+                
+            
+            searchExtentLayer.add(graphic);
+          }
+        }
+
+      });
+
+    });
+    */
+
     //request("http://opendata.arcgis.com/explore.json").then(function(data){
     //request("http://opendatadev.arcgis.com/explore.json").then(function(data){
     request("data/explore-prod.json").then(function(data){
@@ -302,7 +392,7 @@ App.prototype.initMap = function() {
 
         //update total count 
         self.totalDatasetCount = self.totalDatasetCount + parseInt(feature.attributes.datasets_count);
-        $('#total-count').html(self.totalDatasetCount.toLocaleString());
+        //$('#total-count').html(self.totalDatasetCount.toLocaleString());
 
         //update org count
         var orgs = sites.length;
