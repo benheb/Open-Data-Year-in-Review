@@ -8,7 +8,7 @@ var App = function(){
   //EVENTS
   $(window).on('scroll', function() {
     var scrollTop = $(window).scrollTop();
-    console.log('scrollTop',scrollTop);
+    //console.log('scrollTop',scrollTop);
 
 
     //map
@@ -117,7 +117,6 @@ App.prototype.northAmerica = function() {
 
 
 App.prototype.europe = function() {
-  console.log('set europe!');
 
   var startExtent = new esri.geometry.Extent(-51.00, 27.00, 65.00, 66.00,
       new esri.SpatialReference({wkid:4326}) );
@@ -128,7 +127,6 @@ App.prototype.europe = function() {
 
 
 App.prototype.africa = function() {
-  console.log('set europe!');
 
   var startExtent = new esri.geometry.Extent(-48.00, -25.00, 69.00, 32.00,
       new esri.SpatialReference({wkid:4326}) );
@@ -140,7 +138,6 @@ App.prototype.africa = function() {
 
 
 App.prototype.asia = function() {
-  console.log('set asia!');
 
   var startExtent = new esri.geometry.Extent(41.00, -6.00, 160.00, 49.00,
       new esri.SpatialReference({wkid:4326}) );
@@ -150,8 +147,7 @@ App.prototype.asia = function() {
 }
 
 App.prototype.oceania = function() {
-  console.log('set oceania!');
-
+  
   var startExtent = new esri.geometry.Extent(91.00, -51.00, 210.00, 3.00,
       new esri.SpatialReference({wkid:4326}) );
 
@@ -177,8 +173,8 @@ App.prototype.generateStats = function(continent) {
 
     $('.'+continent+'#org-count').html("Total Orgs: "+ visible.length.toLocaleString());
     $('.'+continent+'#dataset-count').html("Datasets Shared: "+ datasets.toLocaleString());
-    console.log('Total orgs: ', visible.length);
-    console.log('Total Datasets: ', datasets);
+    //console.log('Total orgs: ', visible.length);
+    //console.log('Total Datasets: ', datasets);
 
     this.countryStats[continent] = {};
     this.countryStats[continent].visible = visible;
@@ -507,7 +503,7 @@ App.prototype.orgChart = function() {
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.tsv("data/org.tsv", type, function(error, data) {
+  d3.csv("data/org.csv", type, function(error, data) {
     x.domain(data.map(function(d) { return d.letter; }));
     y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
