@@ -82,7 +82,6 @@ p {
   margin:auto;
   margin-top:1em;
   margin-bottom:1.2em;
-  margin: auto 21%;
   max-width: 800px;
   padding-bottom: 20px;
   line-height:1.7em;
@@ -574,7 +573,10 @@ h6 {
   height:80%;
   padding:3em;
   background: url("../images/main-banner-esri.jpg") top center no-repeat #002436;
-  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
